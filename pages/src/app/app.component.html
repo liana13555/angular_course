@@ -1,0 +1,68 @@
+<nav>
+  <ul class="pagination">
+    <li 
+      class="page-item" 
+      [appClass]="{ disabled: currentPage === 0 }"
+    >
+      <a class="page-link" (click)="currentPage = currentPage - 1">Prev</a>
+    </li>
+    <ng-container *appTimes="images.length; let i = index">
+      <li
+        class="page-item"
+        [appClass]="{ active: i === currentPage }"      
+        *ngIf="checkWindowIndex(i)"
+        >
+        <a (click)="currentPage = i" class="page-link" >{{i + 1}}</a>      
+      </li>
+    </ng-container>
+    <li 
+      class="page-item"
+      [appClass]="{ disabled: currentPage === images.length - 1 }"
+    >
+      <a class="page-link" (click)="currentPage = currentPage + 1" >Next</a>
+    </li>
+  </ul>
+</nav>
+
+<div>
+  <!-- <h4 appClass [backgroundColor]="'orange'">{{images[currentPage].title}}</h4> -->
+    <!-- <h4 [appClass]="'orange'">{{images[currentPage].title}}</h4> -->
+  <h4>{{images[currentPage].title}}</h4>
+  <img [src]="images[currentPage].url" alt="{{images[currentPage].title}}">
+</div>
+
+<!-- <ul *appTimes="5">  // for structural directive
+  <li>Ahoj There!</li>
+</ul> -->
+
+<!-- <div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">
+    Current Page is zero
+  </div>
+  <div *ngSwitchCase="2">
+    Current Page is two
+  </div>
+  <div *ngSwitchCase="3">
+    Current Page is three
+  </div>
+  <div *ngSwitchDefault>
+    Unknown current page!
+  </div>
+</div> -->
+
+<!-- 
+<nav>
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{ disabled: currentPage === 0 }">
+      <a class="page-link" (click)="currentPage = currentPage - 1">Prev</a>
+    </li>
+    <ng-container *ngFor="let image of images; let i = index">
+      <li class="page-item" [ngClass]="{ active: i === currentPage }" *ngIf="checkWindowIndex(i)">
+        <a (click)="currentPage = i" class="page-link">{{i + 1}}</a>
+      </li>
+    </ng-container>
+    <li class="page-item" [ngClass]="{ disabled: currentPage === images.length - 1 }">
+      <a class="page-link" (click)="currentPage = currentPage + 1">Next</a>
+    </li>
+  </ul>
+</nav> -->
