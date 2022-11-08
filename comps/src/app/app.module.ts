@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ElementsModule } from "./elements/elements.module";
 import { CollectionsModule } from "./collections/collections.module";
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [  // list of components, pipes, directives that are created in this module
-    AppComponent
+    AppComponent, HomeComponent, NotFoundComponent
   ],
   imports: [     // list of other modules that this module depends upon
     BrowserModule,
-    AppRoutingModule,
     ElementsModule,
-    CollectionsModule
+    CollectionsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
